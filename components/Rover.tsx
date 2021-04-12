@@ -1,4 +1,5 @@
 import { Heading } from '@chakra-ui/layout';
+import RoverPhotos from './RoverPhotos';
 import SolCountActions from './SolCountActions';
 import SolCountDisplayContext from './SolCountDisplayContext';
 import SolCountDisplayHook from './SolCountDisplayHook';
@@ -12,6 +13,7 @@ const Rover = () => {
       <SolCountDisplayContext />
       <SolCountDisplayHook />
       <SolCountActions />
+      <RoverPhotos />
     </section>
   );
 };

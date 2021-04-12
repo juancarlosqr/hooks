@@ -2,12 +2,14 @@ import { createContext, ReactNode, useReducer } from 'react';
 
 // context
 type SolCountState = {
+  show: boolean;
   sol: number;
 };
 type SolCountAction =
   | { type: 'increment' }
   | { type: 'decrement' }
-  | { type: 'set'; payload: number };
+  | { type: 'set'; payload: number }
+  | { type: 'toggle' };
 type SolCountDispatch = (action: SolCountAction) => void;
 type SolCountValue = {
   state: SolCountState;
@@ -18,19 +20,22 @@ export const SolCountContext = createContext<SolCountValue | undefined>(
 );
 
 // intial state
-const solInitialState = { sol: 0 };
+const solInitialState = { sol: 0, show: false };
 
 // reducer
 function solReducer(state: SolCountState, action: SolCountAction) {
   switch (action.type) {
     case 'increment': {
-      return { sol: state.sol + 1 };
+      return { ...state, sol: state.sol + 1 };
     }
     case 'decrement': {
-      return { sol: state.sol > 0 ? state.sol - 1 : 0 };
+      return { ...state, sol: state.sol > 0 ? state.sol - 1 : 0 };
     }
     case 'set': {
-      return { sol: action.payload ?? 0 };
+      return { ...state, sol: action.payload ?? 0 };
+    }
+    case 'toggle': {
+      return { ...state, show: !state.show };
     }
     default: {
       throw new Error(`Unsupported action type`);

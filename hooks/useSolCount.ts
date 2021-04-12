@@ -13,8 +13,9 @@ const useSolCount = () => {
   const increment = () => dispatch({ type: 'increment' });
   const decrement = () => dispatch({ type: 'decrement' });
   const set = (value: number) => dispatch({ type: 'set', payload: value });
+  const toggle = () => dispatch({ type: 'toggle' });
 
-  return { ...state, increment, decrement, set };
+  return { ...state, increment, decrement, set, toggle };
 };
 
 export default useSolCount;
