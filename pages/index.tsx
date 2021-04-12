@@ -1,11 +1,13 @@
 import Layout from '@/components/Layout';
+import Rover from '@/components/Rover';
+import SolCountProvider from '@/providers/SolCountProvider';
 
 export default function Home() {
   return (
     <Layout>
-      <section>
-        <h1>red planet rovers</h1>
-      </section>
+      <SolCountProvider>
+        <Rover />
+      </SolCountProvider>
     </Layout>
   );
 }

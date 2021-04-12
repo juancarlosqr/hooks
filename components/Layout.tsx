@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import Head from 'next/head';
+import { Container, Heading } from '@chakra-ui/react';
 
 type LayoutProps = {
   children: ReactNode;
@@ -9,10 +10,14 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <>
       <Head>
-        <title>red planet rovers</title>
+        <title>Perseverance Rover</title>
       </Head>
 
-      <main>{children}</main>
+      <Container maxW="container.xl" mt="4rem">
+        <Heading>Perseverance Rover</Heading>
+
+        <main>{children}</main>
+      </Container>
     </>
   );
 };
