@@ -23,9 +23,9 @@ const SolCountActions = () => {
   return (
     <form onSubmit={onSubmit}>
       <ButtonGroup mt="2" mr="2" colorScheme="gray">
-        <Button onClick={increment}>👍🏼</Button>
         <Input type="number" value={newValue} onChange={onChange} />
         <Button onClick={decrement}>👎🏼</Button>
+        <Button onClick={increment}>👍🏼</Button>
       </ButtonGroup>
       <Button variant="solid" onClick={toggle}>
         📸
