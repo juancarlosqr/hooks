@@ -20,7 +20,7 @@ export const SolCountContext = createContext<SolCountValue | undefined>(
 );
 
 // intial state
-const solInitialState = { sol: 0, show: false };
+const solInitialState = { show: false, sol: 0 };
 
 // reducer
 function solReducer(state: SolCountState, action: SolCountAction) {
@@ -45,6 +45,9 @@ function solReducer(state: SolCountState, action: SolCountAction) {
 
 // initializer
 function solInitializer(initialState: SolCountState) {
+  // for some expensive computation to calculate the value,
+  // or value is dependant on external sources like localStorage
+  // this will block rendering
   return initialState;
 }
 

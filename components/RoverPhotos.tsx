@@ -1,6 +1,6 @@
-import useSolCount from '@/hooks/useSolCount';
-import { Box, Heading, Text } from '@chakra-ui/layout';
 import { useEffect, useState } from 'react';
+import { Box, Heading, Text } from '@chakra-ui/layout';
+import useSolCount from '@/hooks/useSolCount';
 
 type TSFixMe = any;
 
@@ -14,11 +14,13 @@ type Photo = {
   img_src: string;
 };
 
-const RoverPhotos = () => {
+// hook composition
+const useRoversApi = () => {
   const [photos, setPhotos] = useState<TSFixMe[]>([]);
   const { sol, show } = useSolCount();
 
   useEffect(() => {
+    // just for demo purposes, normally you should use either react-query or swr
     const fetchRoverPhotos = async (sol: number) => {
       const response = await fetch(
         `${API_HOST}/api/v1/rovers/perseverance/photos?sol=${sol}`
@@ -33,8 +35,14 @@ const RoverPhotos = () => {
     }
   }, [sol, show]);
 
+  return { photos, show };
+};
+
+const RoverPhotos = () => {
+  const { photos, show } = useRoversApi();
+
   if (show && !photos.length) {
-    return <Text mt="2">No photos 😕</Text>;
+    return <Text mt="2">No photos available 😕</Text>;
   }
 
   return (

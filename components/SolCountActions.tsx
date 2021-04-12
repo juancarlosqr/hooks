@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import useSolCount from '@/hooks/useSolCount';
 import { Button, ButtonGroup, Input } from '@chakra-ui/react';
+import useSolCount from '@/hooks/useSolCount';
 
 const SolCountActions = () => {
   const { sol, increment, decrement, set, toggle } = useSolCount();
@@ -26,10 +26,8 @@ const SolCountActions = () => {
         <Input type="number" value={newValue} onChange={onChange} />
         <Button onClick={decrement}>👎🏼</Button>
         <Button onClick={increment}>👍🏼</Button>
+        <Button onClick={toggle}>📸</Button>
       </ButtonGroup>
-      <Button variant="solid" onClick={toggle}>
-        📸
-      </Button>
     </form>
   );
 };
